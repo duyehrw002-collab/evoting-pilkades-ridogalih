@@ -1,0 +1,1629 @@
+/* =======================================================
+   SIMULASI E-VOTING PILKADES RIDOGALIH
+   STYLE.CSS - BAGIAN 1
+======================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --merah:#C8102E;
+    --merah-gelap:#9f001a;
+    --putih:#ffffff;
+    --abu:#f3f3f3;
+    --hijau:#22c55e;
+    --biru:#2563eb;
+    --hitam:#202020;
+
+    --shadow:0 12px 35px rgba(0,0,0,.25);
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f7f7f7;
+
+}
+
+/* ============================= */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+/* ============================= */
+/* SPLASH SCREEN */
+/* ============================= */
+
+#splash{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    180deg,
+    #d9001f,
+    #b40018);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    z-index:9999;
+
+    cursor:pointer;
+
+}
+
+.logo-box{
+
+    text-align:center;
+
+    animation:fadeZoom 1s ease;
+
+}
+
+.logo{
+
+    width:150px;
+
+    margin-bottom:20px;
+
+}
+
+.logo-box h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+.logo-box h2{
+
+    margin-top:12px;
+
+    font-size:24px;
+
+    font-weight:500;
+
+}
+
+.touch{
+
+    margin-top:45px;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    animation:blink 1.2s infinite;
+
+}
+
+/* ============================= */
+/* HALAMAN VOTING */
+/* ============================= */
+
+#votingPage{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#ececec;
+
+}
+
+/* ============================= */
+
+header{
+
+    width:100%;
+
+    height:90px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 40px;
+
+    box-shadow:var(--shadow);
+
+    z-index:5;
+
+}
+
+header h1{
+
+    color:var(--merah);
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+header p{
+
+    color:#666;
+
+    margin-top:5px;
+
+}
+
+.jam{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:var(--merah);
+
+}
+
+/* ============================= */
+/* SURAT SUARA */
+/* ============================= */
+
+.surat-suara{
+
+    position:relative;
+
+    width:100%;
+
+    flex:1;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#ddd;
+
+}
+
+#bg{
+
+    width:100%;
+
+    max-width:1400px;
+
+    height:auto;
+
+    object-fit:contain;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+/* ============================= */
+/* HOTSPOT */
+/* ============================= */
+
+.hotspot{
+
+    position:absolute;
+
+    cursor:pointer;
+
+    border:4px solid transparent;
+
+    border-radius:18px;
+
+    transition:.25s;
+
+}
+
+.hotspot:hover{
+
+    border-color:#FFD700;
+
+    background:rgba(255,255,255,.08);
+
+    transform:scale(1.02);
+
+    box-shadow:
+
+    0 0 30px rgba(255,215,0,.5);
+
+}
+
+/* POSISI HOTSPOT
+   SESUAIKAN DENGAN SURAT SUARA */
+
+.calon1{
+
+    left:8.5%;
+
+    top:23%;
+
+    width:24%;
+
+    height:58%;
+
+}
+
+.calon2{
+
+    left:38%;
+
+    top:23%;
+
+    width:24%;
+
+    height:58%;
+
+}
+
+.calon3{
+
+    left:67.5%;
+
+    top:23%;
+
+    width:24%;
+
+    height:58%;
+
+}
+/* =======================================================
+   STYLE.CSS - BAGIAN 2
+   MODAL KONFIRMASI + HALAMAN BERHASIL
+=======================================================*/
+
+/* ============================= */
+/* MODAL */
+/* ============================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.70);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+    backdrop-filter:blur(6px);
+
+}
+
+.modal-box{
+
+    width:650px;
+
+    max-width:95%;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    animation:popup .35s ease;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.modal-box.small{
+
+    width:420px;
+
+}
+
+.modal-title{
+
+    background:#C8102E;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.modal-body{
+
+    padding:35px;
+
+    text-align:center;
+
+}
+
+.nomor-box{
+
+    font-size:22px;
+
+    color:#666;
+
+}
+
+#nomorCalon{
+
+    display:block;
+
+    margin-top:12px;
+
+    font-size:70px;
+
+    color:#C8102E;
+
+    font-weight:700;
+
+}
+
+.nama-box{
+
+    margin-top:15px;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:#222;
+
+}
+
+.pertanyaan{
+
+    margin-top:30px;
+
+    font-size:22px;
+
+    color:#555;
+
+}
+
+/* ============================= */
+/* TOMBOL */
+/* ============================= */
+
+.modal-button{
+
+    display:flex;
+
+    gap:20px;
+
+    padding:25px;
+
+    background:#f5f5f5;
+
+}
+
+.modal-button button{
+
+    flex:1;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.btn-kembali{
+
+    background:#9ca3af;
+
+}
+
+.btn-kembali:hover{
+
+    background:#6b7280;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-yakin{
+
+    background:#16a34a;
+
+}
+
+.btn-yakin:hover{
+
+    background:#15803d;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-yakin:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+}
+
+/* ============================= */
+/* SUCCESS PAGE */
+/* ============================= */
+
+#successPage{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.success-box{
+
+    width:760px;
+
+    max-width:95%;
+
+    text-align:center;
+
+}
+
+.checkmark{
+
+    width:160px;
+
+    height:160px;
+
+    margin:auto;
+
+    border-radius:100%;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-size:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    animation:bounce .6s ease;
+
+}
+
+.success-box h1{
+
+    margin-top:30px;
+
+    font-size:52px;
+
+    color:#16a34a;
+
+}
+
+.success-box h2{
+
+    margin-top:15px;
+
+    font-size:30px;
+
+    color:#222;
+
+}
+
+.success-box p{
+
+    margin-top:30px;
+
+    font-size:24px;
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+.countdown{
+
+    margin-top:40px;
+
+    font-size:26px;
+
+}
+
+#timer{
+
+    margin:20px auto;
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:100%;
+
+    background:#C8102E;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:60px;
+
+    font-weight:700;
+
+}
+
+/* ============================= */
+/* LOADING */
+/* ============================= */
+
+#loading{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(255,255,255,.95);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1500;
+
+}
+
+.loader{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    border:8px solid #ddd;
+
+    border-top-color:#C8102E;
+
+    animation:spin .8s linear infinite;
+
+}
+
+#loading h3{
+
+    margin-top:25px;
+
+    font-size:24px;
+
+    color:#555;
+
+}
+
+/* ============================= */
+/* TOAST */
+/* ============================= */
+
+.toast{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    min-width:320px;
+
+    background:#16a34a;
+
+    color:white;
+
+    padding:18px 24px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+
+    z-index:3000;
+
+}
+
+.toast-icon{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.toast-text{
+
+    font-size:18px;
+
+}
+/* =======================================================
+   STYLE.CSS - BAGIAN 3
+   HEADER • FOOTER • FULLSCREEN • RESPONSIVE • ANIMASI
+=======================================================*/
+
+/* ============================= */
+/* HEADER INFO */
+/* ============================= */
+
+#headerInfo{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:75px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 30px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+
+    z-index:80;
+
+}
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.header-logo{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:contain;
+
+}
+
+.header-text h2{
+
+    font-size:18px;
+
+    color:#C8102E;
+
+    font-weight:700;
+
+}
+
+.header-text h3{
+
+    font-size:14px;
+
+    color:#555;
+
+    font-weight:500;
+
+}
+
+.header-right{
+
+    text-align:right;
+
+}
+
+#tanggal{
+
+    font-size:16px;
+
+    color:#666;
+
+}
+
+#clockDigital{
+
+    font-size:30px;
+
+    color:#C8102E;
+
+    font-weight:700;
+
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer{
+
+    position:fixed;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:55px;
+
+    background:#C8102E;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    font-size:16px;
+
+    z-index:70;
+
+}
+
+.footer-right{
+
+    font-weight:700;
+
+}
+
+/* ============================= */
+/* FULLSCREEN */
+/* ============================= */
+
+.fullscreen-btn{
+
+    position:fixed;
+
+    right:25px;
+
+    top:90px;
+
+    width:170px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+    z-index:200;
+
+}
+
+.fullscreen-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
+#overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    z-index:500;
+
+}
+
+/* ============================= */
+/* RIPPLE */
+/* ============================= */
+
+#rippleContainer{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:300;
+
+}
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    transform:scale(0);
+
+    animation:ripple .6s linear;
+
+}
+
+/* ============================= */
+/* TRANSITION */
+/* ============================= */
+
+#transitionScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:5000;
+
+}
+
+.transition-logo img{
+
+    width:130px;
+
+}
+
+.transition-text{
+
+    margin-top:25px;
+
+    font-size:28px;
+
+    color:#C8102E;
+
+    font-weight:700;
+
+}
+
+/* ============================= */
+/* VERSION */
+/* ============================= */
+
+#version{
+
+    position:fixed;
+
+    right:15px;
+
+    bottom:70px;
+
+    color:#888;
+
+    font-size:13px;
+
+    z-index:50;
+
+}
+
+/* ============================= */
+/* COPYRIGHT */
+/* ============================= */
+
+#copyright{
+
+    position:fixed;
+
+    bottom:8px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:13px;
+
+    z-index:90;
+
+}
+
+/* ============================= */
+/* FLASH */
+/* ============================= */
+
+#flashScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+}
+
+/* ============================= */
+/* LOADING BAR */
+/* ============================= */
+
+#loadingBar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:#ddd;
+
+    z-index:9999;
+
+}
+
+#loadingProgress{
+
+    width:0;
+
+    height:100%;
+
+    background:#22c55e;
+
+    transition:width .35s ease;
+
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media(max-width:992px){
+
+header{
+
+    padding:15px;
+
+}
+
+header h1{
+
+    font-size:24px;
+
+}
+
+header p{
+
+    display:none;
+
+}
+
+.hotspot{
+
+    border-width:3px;
+
+}
+
+.logo{
+
+    width:110px;
+
+}
+
+.logo-box h1{
+
+    font-size:28px;
+
+}
+
+.success-box h1{
+
+    font-size:38px;
+
+}
+
+.success-box h2{
+
+    font-size:22px;
+
+}
+
+.success-box p{
+
+    font-size:18px;
+
+}
+
+#timer{
+
+    width:90px;
+
+    height:90px;
+
+    font-size:42px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.fullscreen-btn{
+
+    width:120px;
+
+    font-size:13px;
+
+}
+
+.header-text{
+
+    display:none;
+
+}
+
+footer{
+
+    font-size:12px;
+
+}
+
+.modal-title{
+
+    font-size:22px;
+
+}
+
+#nomorCalon{
+
+    font-size:48px;
+
+}
+
+.nama-box{
+
+    font-size:22px;
+
+}
+
+.modal-button{
+
+    flex-direction:column;
+
+}
+
+.modal-button button{
+
+    width:100%;
+
+}
+
+}
+
+/* ============================= */
+/* ANIMASI */
+/* ============================= */
+
+@keyframes spin{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes fadeZoom{
+
+0%{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes popup{
+
+0%{
+
+opacity:0;
+
+transform:translateY(40px) scale(.9);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+@keyframes bounce{
+
+0%{
+
+transform:scale(.2);
+
+}
+
+60%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:.35;
+
+}
+
+}
+
+@keyframes ripple{
+
+to{
+
+transform:scale(12);
+
+opacity:0;
+
+}
+
+}
+/* =======================================================
+   STYLE.CSS - BAGIAN 4
+   FINISHING
+=======================================================*/
+
+/* Glow saat calon disentuh */
+.hotspot.active{
+    border:5px solid #22c55e;
+    box-shadow:
+        0 0 20px rgba(34,197,94,.6),
+        0 0 40px rgba(34,197,94,.4),
+        0 0 60px rgba(34,197,94,.2);
+    transform:scale(1.03);
+}
+
+/* Saat ditekan */
+.hotspot:active{
+    transform:scale(.98);
+}
+
+/* Disable klik */
+.disable-click{
+    pointer-events:none;
+}
+
+/* Tombol efek */
+button{
+    transition:.25s ease;
+}
+
+button:hover{
+    filter:brightness(1.05);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+/* Countdown */
+#timer{
+
+    animation:timerPulse 1s infinite;
+
+}
+
+@keyframes timerPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* Checkmark */
+
+.checkmark{
+
+animation:successPop .6s ease;
+
+}
+
+@keyframes successPop{
+
+0%{
+
+transform:scale(0);
+
+opacity:0;
+
+}
+
+70%{
+
+transform:scale(1.15);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* Toast */
+
+.toast.show{
+
+animation:toastIn .4s ease;
+
+}
+
+@keyframes toastIn{
+
+from{
+
+transform:translateX(100%);
+
+opacity:0;
+
+}
+
+to{
+
+transform:translateX(0);
+
+opacity:1;
+
+}
+
+}
+
+/* Splash */
+
+#splash.hide{
+
+animation:splashOut .8s forwards;
+
+}
+
+@keyframes splashOut{
+
+to{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+}
+
+/* Voting */
+
+#votingPage.show{
+
+animation:fadeVoting .8s;
+
+}
+
+@keyframes fadeVoting{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* Success */
+
+#successPage.show{
+
+animation:successFade .5s;
+
+}
+
+@keyframes successFade{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* Loader */
+
+.loader{
+
+box-shadow:
+
+0 0 15px rgba(200,16,46,.3);
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#C8102E;
+
+border-radius:8px;
+
+}
+
+/* Selection */
+
+::selection{
+
+background:#C8102E;
+
+color:white;
+
+}
+
+/* Body */
+
+body{
+
+-webkit-user-select:none;
+
+user-select:none;
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+/* Image */
+
+img{
+
+pointer-events:none;
+
+}
+
+/* Smooth */
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+/* Fullscreen */
+
+:fullscreen{
+
+background:white;
+
+}
+
+/* Finish */
+
+.fade-out{
+
+animation:fadeOut .5s forwards;
+
+}
+
+@keyframes fadeOut{
+
+to{
+
+opacity:0;
+
+}
+
+}
+
+.fade-in{
+
+animation:fadeIn .5s;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}

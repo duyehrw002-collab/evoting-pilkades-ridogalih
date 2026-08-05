@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>SIMULASI E-VOTING PILKADES</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- SPLASH SCREEN -->
+<!-- ===================================================== -->
+
+<div id="splash">
+
+    <div class="logo-box">
+
+        <img src="img/logo.png" class="logo">
+
+        <h1>
+            SIMULASI<br>
+            PEMILIHAN KEPALA DESA
+        </h1>
+
+        <h2>DESA RIDOGALIH</h2>
+
+        <p class="touch">
+            SENTUH LAYAR UNTUK MEMULAI
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- HALAMAN SURAT SUARA -->
+<!-- ===================================================== -->
+
+<div id="votingPage" class="hidden">
+
+<header>
+
+<div class="judul">
+
+<h1>
+
+SURAT SUARA
+
+</h1>
+
+<p>
+
+Silakan pilih salah satu calon Kepala Desa
+
+</p>
+
+</div>
+
+<div class="jam">
+
+<span id="clock"></span>
+
+</div>
+
+</header>
+
+
+
+<!-- ===================================================== -->
+
+<div class="surat-suara">
+
+<img src="img/surat-suara.jpg" id="bg">
+
+<!-- ================================================= -->
+<!-- HOTSPOT CALON 1 -->
+<!-- ================================================= -->
+
+<div
+class="hotspot calon1"
+data-calon="1"
+data-nama="CALON NOMOR 1">
+
+</div>
+
+<!-- ================================================= -->
+<!-- HOTSPOT CALON 2 -->
+<!-- ================================================= -->
+
+<div
+class="hotspot calon2"
+data-calon="2"
+data-nama="CALON NOMOR 2">
+
+</div>
+
+<!-- ================================================= -->
+<!-- HOTSPOT CALON 3 -->
+<!-- ================================================= -->
+
+<div
+class="hotspot calon3"
+data-calon="3"
+data-nama="CALON NOMOR 3">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- MODAL KONFIRMASI -->
+<!-- (lanjut di Bagian 2) -->
+<!-- ===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
+<!-- ===================================================== -->
+<!-- MODAL KONFIRMASI -->
+<!-- ===================================================== -->
+
+<div id="confirmModal" class="modal hidden">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            KONFIRMASI PILIHAN
+        </div>
+
+        <div class="modal-body">
+
+            <div class="nomor-box">
+
+                Nomor Urut
+
+                <span id="nomorCalon">
+                    1
+                </span>
+
+            </div>
+
+            <div class="nama-box">
+
+                <span id="namaCalon">
+                    CALON NOMOR 1
+                </span>
+
+            </div>
+
+            <p class="pertanyaan">
+
+                Apakah Anda yakin
+                dengan pilihan ini?
+
+            </p>
+
+        </div>
+
+        <div class="modal-button">
+
+            <button
+                id="btnKembali"
+                class="btn-kembali">
+
+                ← KEMBALI
+
+            </button>
+
+            <button
+                id="btnYakin"
+                class="btn-yakin">
+
+                ✔ YA, SAYA YAKIN
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- HALAMAN BERHASIL -->
+<!-- ===================================================== -->
+
+<div id="successPage" class="hidden">
+
+    <div class="success-box">
+
+        <div class="checkmark">
+
+            ✔
+
+        </div>
+
+        <h1>
+
+            TERIMA KASIH
+
+        </h1>
+
+        <h2>
+
+            Suara Anda berhasil disimpan
+
+        </h2>
+
+        <p>
+
+            Silakan mengambil
+            <b>RESI PEMILIHAN</b>
+            di meja petugas
+            sebagai tanda bahwa Anda
+            telah menggunakan hak pilih.
+
+        </p>
+
+        <div class="countdown">
+
+            Kembali ke halaman awal dalam
+
+            <div id="timer">
+
+                5
+
+            </div>
+
+            detik
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- AUDIO -->
+<!-- ===================================================== -->
+
+<audio
+id="clickSound"
+preload="auto">
+
+<source
+src="sound/click.mp3"
+type="audio/mpeg">
+
+</audio>
+
+
+
+<audio
+id="beepSound"
+preload="auto">
+
+<source
+src="sound/beep.mp3"
+type="audio/mpeg">
+
+</audio>
+
+
+
+<audio
+id="successSound"
+preload="auto">
+
+<source
+src="sound/success.mp3"
+type="audio/mpeg">
+
+</audio>
+
+
+
+<!-- ===================================================== -->
+<!-- LOADING -->
+<!-- ===================================================== -->
+
+<div id="loading" class="hidden">
+
+    <div class="loader"></div>
+
+    <h3>
+
+        Memproses Pilihan...
+
+    </h3>
+
+</div>
+<!-- ===================================================== -->
+<!-- HEADER INFO -->
+<!-- ===================================================== -->
+
+<div id="headerInfo">
+
+    <div class="header-left">
+
+        <img src="img/logo.png" class="header-logo">
+
+        <div class="header-text">
+
+            <h2>PANITIA PEMILIHAN KEPALA DESA</h2>
+
+            <h3>DESA RIDOGALIH</h3>
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <div id="tanggal"></div>
+
+        <div id="clockDigital"></div>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- FULLSCREEN BUTTON -->
+<!-- ===================================================== -->
+
+<button id="fullscreenBtn" class="fullscreen-btn">
+
+⛶ FULLSCREEN
+
+</button>
+
+<!-- ===================================================== -->
+<!-- RIPPLE EFFECT -->
+<!-- ===================================================== -->
+
+<div id="rippleContainer"></div>
+
+<!-- ===================================================== -->
+<!-- NOTIFIKASI -->
+<!-- ===================================================== -->
+
+<div id="toast" class="toast hidden">
+
+    <div class="toast-icon">
+
+        ✔
+
+    </div>
+
+    <div class="toast-text">
+
+        Pilihan berhasil diproses
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- OVERLAY -->
+<!-- ===================================================== -->
+
+<div id="overlay" class="hidden"></div>
+
+<!-- ===================================================== -->
+<!-- TRANSISI -->
+<!-- ===================================================== -->
+
+<div id="transitionScreen" class="hidden">
+
+    <div class="transition-logo">
+
+        <img src="img/logo.png">
+
+    </div>
+
+    <div class="transition-text">
+
+        Memuat Simulasi...
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer>
+
+<div class="footer-left">
+
+SIMULASI DIGITAL PEMILIHAN KEPALA DESA
+
+</div>
+
+<div class="footer-right">
+
+TPS 001
+
+</div>
+
+</footer>
+
+<!-- ===================================================== -->
+<!-- VERSION -->
+<!-- ===================================================== -->
+
+<div id="version">
+
+Version 1.0
+
+</div>
+
+<!-- ===================================================== -->
+<!-- DATA -->
+<!-- ===================================================== -->
+
+<input
+type="hidden"
+id="selectedNumber"
+value="">
+
+<input
+type="hidden"
+id="selectedName"
+value="">
+
+<!-- ===================================================== -->
+<!-- END PAGE -->
+<!-- ===================================================== -->
+<!-- ===================================================== -->
+<!-- DIALOG RESET -->
+<!-- ===================================================== -->
+
+<div id="resetDialog" class="modal hidden">
+
+    <div class="modal-box small">
+
+        <h2>Simulasi Selesai</h2>
+
+        <p>
+
+            Sistem akan kembali
+            ke halaman awal.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- BACKGROUND PARTICLE -->
+<!-- ===================================================== -->
+
+<div id="particles"></div>
+
+<!-- ===================================================== -->
+<!-- SCREEN FLASH -->
+<!-- ===================================================== -->
+
+<div id="flashScreen"></div>
+
+<!-- ===================================================== -->
+<!-- LOADING BAR -->
+<!-- ===================================================== -->
+
+<div id="loadingBar">
+
+    <div id="loadingProgress"></div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- COPYRIGHT -->
+<!-- ===================================================== -->
+
+<div id="copyright">
+
+© 2026 Panitia Pemilihan Kepala Desa Ridogalih
+
+</div>
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
