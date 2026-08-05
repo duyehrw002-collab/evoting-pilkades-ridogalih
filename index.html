@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simulasi E-Voting Pilkades Ridogalih</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= SPLASH ================= -->
+
+<div id="splash">
+
+    <img src="img/logo.png" class="logo">
+
+    <h1>SIMULASI E-VOTING</h1>
+
+    <h2>PEMILIHAN KEPALA DESA RIDOGALIH</h2>
+
+    <button id="btnMulai">
+        SENTUH UNTUK MEMULAI
+    </button>
+
+</div>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div>
+
+<h1>SIMULASI E-VOTING</h1>
+
+<p>Silakan pilih salah satu calon Kepala Desa</p>
+
+</div>
+
+<div id="clock"></div>
+
+</header>
+
+<!-- ================= SURAT SUARA ================= -->
+
+<main id="votingPage" class="hidden">
+
+<div class="ballot">
+
+<img src="img/surat-suara.jpg" id="ballotImage">
+
+<!-- HOTSPOT -->
+
+<div class="hotspot calon1"
+     data-nomor="1"
+     data-nama="CALON NOMOR 1"></div>
+
+<div class="hotspot calon2"
+     data-nomor="2"
+     data-nama="CALON NOMOR 2"></div>
+
+<div class="hotspot calon3"
+     data-nomor="3"
+     data-nama="CALON NOMOR 3"></div>
+
+</div>
+
+</main>
+
+<!-- ================= MODAL ================= -->
+
+<div id="confirmModal" class="modal hidden">
+
+<div class="modal-content">
+
+<h2>KONFIRMASI PILIHAN</h2>
+
+<p>Nomor Urut</p>
+
+<h1 id="modalNomor">1</h1>
+
+<h3 id="modalNama"></h3>
+
+<p>Apakah Anda yakin dengan pilihan ini?</p>
+
+<div class="buttonArea">
+
+<button id="btnBatal">
+
+KEMBALI
+
+</button>
+
+<button id="btnYa">
+
+YA, SAYA YAKIN
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= SUCCESS ================= -->
+
+<div id="successPage" class="hidden">
+
+<div class="successBox">
+
+<div class="checkmark">
+
+✔
+
+</div>
+
+<h1>
+
+TERIMA KASIH
+
+</h1>
+
+<p>
+
+Suara Anda berhasil disimpan.
+
+</p>
+
+<p>
+
+Silakan mengambil resi di depan sebagai tanda Anda telah memilih.
+
+</p>
+
+<div id="countdown">
+
+5
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= AUDIO ================= -->
+
+<audio id="clickSound">
+
+<source src="sound/click.mp3" type="audio/mpeg">
+
+</audio>
+
+<audio id="beepSound">
+
+<source src="sound/beep.mp3" type="audio/mpeg">
+
+</audio>
+
+<audio id="successSound">
+
+<source src="sound/success.mp3" type="audio/mpeg">
+
+</audio>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
