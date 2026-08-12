@@ -1,0 +1,59 @@
+*{box-sizing:border-box}
+:root{--blue:#111fd8;--orange:#f33d12}
+html,body{margin:0;width:100%;height:100%;background:#fff;color:#000;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+body{touch-action:manipulation}
+.voting-page{width:100%;height:100dvh;padding:2vh 2.2vw 2vh;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.header{text-align:center;flex:0 0 auto;margin:0 0 2.4vh}
+.logo{display:block;width:clamp(55px,7vh,115px);height:clamp(60px,9vh,135px);object-fit:contain;margin:0 auto .5vh}
+.header h1{margin:0 0 .2vh;font-size:clamp(30px,5.1vh,72px);line-height:.95;font-weight:800;letter-spacing:1px}
+.header h2{margin:.15vh 0;font-size:clamp(13px,2.45vh,34px);line-height:1.03;font-weight:800}
+.candidate-grid{flex:1 1 auto;min-height:0;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.15vw;align-items:stretch}
+.candidate-card{position:relative;min-width:0;min-height:0;cursor:pointer;user-select:none;border:4px solid transparent;border-radius:7px;padding:0;background:#fff;transition:border-color .12s ease;display:flex;flex-direction:column;overflow:hidden}
+.candidate-card.selected{border-color:#f04a18}
+.photo-wrap{position:relative;width:100%;flex:1 1 auto;min-height:0;overflow:hidden;background:#e60000}
+.photo-wrap img{display:block;width:100%;height:100%;object-fit:cover}
+.number{position:absolute;z-index:2;top:1.1vh;left:.7vw;width:clamp(34px,5.8vh,62px);height:clamp(42px,7.5vh,75px);display:flex;align-items:center;justify-content:center;border-radius:7px;background:#111de0;color:#fff;font-size:clamp(24px,4.5vh,42px);font-weight:800}
+.candidate-name{flex:0 0 clamp(30px,6vh,54px);display:flex;align-items:center;justify-content:center;padding:2px 3px;background:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(11px,2.5vh,29px);line-height:1;font-weight:900;letter-spacing:clamp(.5px,.16vw,2px);white-space:nowrap;overflow:hidden;text-overflow:clip}
+.vote-button{flex:0 0 clamp(50px,10vh,100px);width:100%;margin-top:1.7vh;border:0;border-radius:14px;background:var(--orange);color:#fff;font-size:clamp(22px,4.3vh,48px);font-weight:500;cursor:pointer}
+.vote-button:active{transform:scale(.995)}
+.overlay{position:fixed;z-index:100;inset:0;display:flex;align-items:center;justify-content:center;padding:2vw;background:rgba(0,0,0,.64)}
+.hidden{display:none!important}
+.confirm-modal{width:min(1600px,92vw);max-height:96dvh;padding:2vh 20px 1.5vh;border-radius:18px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.confirm-title{font-size:clamp(24px,5vh,48px);line-height:1;font-weight:700}
+.confirm-question{margin-top:4px;color:#d52222;font-size:clamp(20px,4.4vh,44px);line-height:1.05}
+.selected-candidate{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:1vh}
+.selected-candidate img{width:min(27vh,300px);height:min(27vh,300px);object-fit:cover;background:#e60000}
+.selected-name{margin-top:4px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(20px,4vh,42px);font-weight:900;letter-spacing:2px}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:center;margin-top:1vh}
+.repeat-button,.confirm-button{height:clamp(52px,10vh,82px);border:0;border-radius:12px;background:transparent;font-size:clamp(23px,4.2vh,48px);cursor:pointer}
+.confirm-button{background:var(--blue);color:#fff}
+.success-modal{width:min(780px,90vw);padding:4vh 3vw;border-radius:18px;background:#fff;text-align:center;box-shadow:0 20px 70px rgba(0,0,0,.4)}
+.check-circle{width:min(104px,18vh);height:min(104px,18vh);margin:0 auto 2vh;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#63ef9a;color:#fff;font-size:min(70px,12vh)}
+.success-title{font-size:clamp(34px,7vh,62px);font-weight:500}
+.success-text{margin-top:4px;font-size:clamp(20px,4.3vh,40px);font-weight:700}
+
+/* HP: wajib landscape agar semua 5 calon terlihat sekaligus */
+@media (max-width:900px){
+  .voting-page{padding:1.5vh 1.5vw 1.5vh}
+  .header{margin-bottom:1.4vh}
+  .logo{width:clamp(42px,7vh,70px);height:clamp(45px,8vh,78px)}
+  .header h1{font-size:clamp(25px,6vh,44px)}
+  .header h2{font-size:clamp(10px,2.8vh,20px)}
+  .candidate-grid{gap:.65vw}
+  .candidate-card{border-width:3px}
+  .number{left:.45vw;top:.8vh;width:clamp(28px,6vh,44px);height:clamp(35px,7vh,52px);font-size:clamp(20px,4.8vh,32px)}
+  .candidate-name{flex-basis:clamp(24px,5.5vh,38px);font-size:clamp(9px,2.5vh,18px);letter-spacing:.5px}
+  .vote-button{flex-basis:clamp(42px,9vh,60px);margin-top:1vh;border-radius:9px;font-size:clamp(18px,4vh,30px)}
+}
+
+/* Saat HP masih tegak, jangan membuat halaman bergeser/scroll.
+   Pengguna diminta memutar HP ke landscape. */
+@media (orientation:portrait) and (max-width:900px){
+  .voting-page{visibility:hidden}
+  .rotate-message{display:flex!important}
+}
+.rotate-message{display:none;position:fixed;z-index:9999;inset:0;background:#fff;align-items:center;justify-content:center;text-align:center;padding:30px}
+.rotate-box{max-width:330px}
+.rotate-icon{font-size:64px;margin-bottom:12px}
+.rotate-title{font-size:28px;font-weight:800}
+.rotate-text{margin-top:8px;font-size:17px;line-height:1.4}
